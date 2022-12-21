@@ -16,4 +16,13 @@ describe(Counter, () => {
     const countValue2 = Number(getByTestId('count').textContent);
     expect(countValue2).toEqual(1);
   });
+  it('count should decrement by 1 if the decrement button is clicked', () => {
+    const { getByTestId, getByRole } = render(<Counter initialCount={0} />);
+    const decrementBtn = getByRole('button', { name: 'Decrement' });
+    const countValue1 = Number(getByTestId('count').textContent);
+    expect(countValue1).toEqual(0);
+    fireEvent.click(decrementBtn);
+    const countValue2 = Number(getByTestId('count').textContent);
+    expect(countValue2).toEqual(-1);
+  });
 });
