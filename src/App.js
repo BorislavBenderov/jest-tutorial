@@ -1,7 +1,10 @@
+import { Counter } from "./Counter.js";
+import { useState, useEffect } from "react";
+
 function App() {
   return (
     <div className="App">
-      Hello World
+      <Counter initialCount={0} />
     </div>
   );
 }
