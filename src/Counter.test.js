@@ -37,4 +37,14 @@ describe(Counter, () => {
     const countValue2 = Number(getByTestId('count').textContent);
     expect(countValue2).toEqual(0);
   });
+
+  it('count should invert signs if the switch button is clicked', () => {
+    const { getByTestId, getByRole } = render(<Counter initialCount={50} />);
+    const switchBtn = getByRole('button', { name: 'Switch Signs' });
+    const countValue1 = Number(getByTestId('count').textContent);
+    expect(countValue1).toEqual(50);
+    fireEvent.click(switchBtn);
+    const countValue2 = Number(getByTestId('count').textContent);
+    expect(countValue2).toEqual(-50);
+  });
 });
